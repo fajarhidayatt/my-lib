@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/anggota/{id}', [AnggotaController::class, 'detail'])->name('anggota.detail');
     Route::patch('/anggota/{id}', [AnggotaController::class, 'update'])->name('anggota.update');
     Route::delete('/anggota/{id}/delete', [AnggotaController::class, 'delete'])->name('anggota.delete');
+
+    // menu buku
+    Route::resource('buku', BukuController::class);
 
     // menu admin profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

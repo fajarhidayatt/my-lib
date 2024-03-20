@@ -34,6 +34,12 @@ export default function Authenticated({ user, header, children }) {
                                 >
                                     Anggota
                                 </NavLink>
+                                <NavLink
+                                    href={route("buku.index")}
+                                    active={route().current("buku.*")}
+                                >
+                                    Buku
+                                </NavLink>
                             </div>
                         </div>
 
@@ -142,7 +148,13 @@ export default function Authenticated({ user, header, children }) {
                             href={route("anggota.index")}
                             active={route().current("anggota.*")}
                         >
-                            Dashboard
+                            Anggota
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("buku.index")}
+                            active={route().current("buku.*")}
+                        >
+                            Buku
                         </ResponsiveNavLink>
                     </div>
 
