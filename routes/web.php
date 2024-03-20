@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,14 +26,24 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
+    // menu beranda dashboard
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    // menu anggota
+    Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota.index');
+    Route::get('/anggota/new', [AnggotaController::class, 'new'])->name('anggota.new');
+    Route::post('/anggota/create', [AnggotaController::class, 'create'])->name('anggota.create');
+    Route::get('/anggota/{id}', [AnggotaController::class, 'detail'])->name('anggota.detail');
+    Route::patch('/anggota/{id}', [AnggotaController::class, 'update'])->name('anggota.update');
+    Route::delete('/anggota/{id}/delete', [AnggotaController::class, 'delete'])->name('anggota.delete');
+
+    // menu admin profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
