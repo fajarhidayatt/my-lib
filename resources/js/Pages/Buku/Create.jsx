@@ -10,7 +10,7 @@ export default function BukuCreate({ auth }) {
     const { data, setData, post, errors, processing } = useForm({
         judul: "",
         penulis: "",
-        stok: 0,
+        stok: "",
     });
 
     // proses tambah data
@@ -88,12 +88,16 @@ export default function BukuCreate({ auth }) {
                             </div>
                             <div className="flex items-center justify-end gap-2">
                                 <DangerButton
+                                    type="button"
                                     disabled={processing}
                                     onClick={() => window.history.back()}
                                 >
                                     Kembali
                                 </DangerButton>
-                                <PrimaryButton disabled={processing}>
+                                <PrimaryButton
+                                    type="submit"
+                                    disabled={processing}
+                                >
                                     Tambah
                                 </PrimaryButton>
                             </div>

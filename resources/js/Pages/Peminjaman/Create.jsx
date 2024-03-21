@@ -11,7 +11,7 @@ export default function PeminjamanCreate({ auth, buku, anggota }) {
     const { data, setData, post, errors, processing } = useForm({
         buku_id: "",
         anggota_id: "",
-        total: 0,
+        total: "",
         status: "",
     });
 
@@ -86,7 +86,10 @@ export default function PeminjamanCreate({ auth, buku, anggota }) {
                                 />
                             </div>
                             <div>
-                                <InputLabel htmlFor="total" value="Total" />
+                                <InputLabel
+                                    htmlFor="total"
+                                    value="Total Pinjaman"
+                                />
                                 <TextInput
                                     id="total"
                                     className="mt-1 block w-full"
@@ -127,12 +130,16 @@ export default function PeminjamanCreate({ auth, buku, anggota }) {
                             </div>
                             <div className="flex items-center justify-end gap-2">
                                 <DangerButton
+                                    type="button"
                                     disabled={processing}
                                     onClick={() => window.history.back()}
                                 >
                                     Kembali
                                 </DangerButton>
-                                <PrimaryButton disabled={processing}>
+                                <PrimaryButton
+                                    type="submit"
+                                    disabled={processing}
+                                >
                                     Tambah
                                 </PrimaryButton>
                             </div>
