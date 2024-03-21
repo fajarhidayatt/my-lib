@@ -12,7 +12,7 @@ class BukuRequest extends FormRequest
         return true;
     }
 
-    // validasi input untuk data anggota
+    // validasi input untuk data buku
     public function rules(): array
     {
         return [
