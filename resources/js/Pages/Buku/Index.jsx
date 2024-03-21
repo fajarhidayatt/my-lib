@@ -10,7 +10,7 @@ import { useState } from "react";
 
 export default function Buku({ auth, buku }) {
     const [confirmDelete, setConfirmDelete] = useState(false);
-    const [bukuId, setBukuId] = useState(false);
+    const [bukuId, setBukuId] = useState(null);
 
     const { delete: destroy, processing } = useForm();
 
@@ -67,46 +67,57 @@ export default function Buku({ auth, buku }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {buku.map((data, index) => (
-                                        <tr
-                                            className="bg-white border-b "
-                                            key={data.id}
-                                        >
-                                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                                {index + 1}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {data.judul}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {data.penulis}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {data.stok}
-                                            </td>
-                                            <td className="px-6 py-4 flex items-center gap-1">
-                                                <Link
-                                                    href={route(
-                                                        "buku.edit",
-                                                        data.id
-                                                    )}
-                                                >
-                                                    <SecondaryButton>
-                                                        <IcPencil />
-                                                    </SecondaryButton>
-                                                </Link>
-                                                <DangerButton
-                                                    onClick={() =>
-                                                        konfirmasiHapusData(
+                                    {buku.length > 0 ? (
+                                        buku.map((data, index) => (
+                                            <tr
+                                                className="bg-white border-b "
+                                                key={data.id}
+                                            >
+                                                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                                    {index + 1}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {data.judul}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {data.penulis}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {data.stok}
+                                                </td>
+                                                <td className="px-6 py-4 flex items-center gap-1">
+                                                    <Link
+                                                        href={route(
+                                                            "buku.edit",
                                                             data.id
-                                                        )
-                                                    }
-                                                >
-                                                    <IcTrash />
-                                                </DangerButton>
+                                                        )}
+                                                    >
+                                                        <SecondaryButton>
+                                                            <IcPencil />
+                                                        </SecondaryButton>
+                                                    </Link>
+                                                    <DangerButton
+                                                        onClick={() =>
+                                                            konfirmasiHapusData(
+                                                                data.id
+                                                            )
+                                                        }
+                                                    >
+                                                        <IcTrash />
+                                                    </DangerButton>
+                                                </td>
+                                            </tr>
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td
+                                                className="text-center font-medium py-5"
+                                                colSpan={5}
+                                            >
+                                                Belum ada data
                                             </td>
                                         </tr>
-                                    ))}
+                                    )}
                                 </tbody>
                             </table>
                             {/* END tabel buku */}
