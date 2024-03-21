@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AnggotaRequest;
 use App\Models\Anggota;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class AnggotaController extends Controller
@@ -33,7 +31,7 @@ class AnggotaController extends Controller
 
         Anggota::create($data);
 
-        return Redirect::route('anggota.index');
+        return redirect()->route('anggota.index');
     }
 
     // menampilkan halaman detail data anggota
@@ -55,7 +53,7 @@ class AnggotaController extends Controller
 
         $detailAnggota->update($data);
 
-        return Redirect::route('anggota.index');
+        return redirect()->route('anggota.index');
     }
 
     // proses hapus data anggota
@@ -65,6 +63,6 @@ class AnggotaController extends Controller
 
         $detailAnggota->delete();
 
-        return Redirect::route('anggota.index');
+        return redirect()->route('anggota.index');
     }
 }

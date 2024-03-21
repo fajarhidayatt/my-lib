@@ -7,7 +7,6 @@ use App\Models\Anggota;
 use App\Models\Buku;
 use App\Models\Peminjaman;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class PeminjamanController extends Controller
@@ -38,8 +37,9 @@ class PeminjamanController extends Controller
     public function store(PeminjamanRequest $request)
     {
         $data = $request->validated();
-        $data['peminjaman'] = Carbon::now('Asia/Jakarta')->toDateTimeString(); // set tanggal peminjaman pada waktu sekarang
+        $data['peminjaman'] = Carbon::now('Asia/Jakarta')->toDateTimeString(); // set tanggal peminjaman pada waktu saat ini
 
+        // ambil data buku yang dipinjam
         $buku = Buku::find($data['buku_id']);
 
         // jika stok buka kurang dari total dipinjam, maka munculkan eror validasi
@@ -56,12 +56,12 @@ class PeminjamanController extends Controller
         return redirect()->route('peminjaman.index');
     }
 
-    // menampilkan halaman form ubah data peminjaman
+    // menampilkan halaman detail data peminjaman
     public function edit(string $id)
     {
-        $detailPeminjaman = Peminjaman::findOrFail($id);
         $buku = Buku::all();
         $anggota = Anggota::all();
+        $detailPeminjaman = Peminjaman::findOrFail($id);
 
         return Inertia::render('Peminjaman/Edit', [
             'peminjaman' => $detailPeminjaman,
@@ -79,7 +79,7 @@ class PeminjamanController extends Controller
 
         // jika status peminjaman diubah menjadi 'Dikembalikan', maka set tanggal 'pengembalian' dan update stok buku
         if ($data['status'] === 'Dikembalikan') {
-            $data['pengembalian'] = Carbon::now('Asia/Jakarta')->toDateTimeString(); // set tanggal pengembalian pada waktu sekarang
+            $data['pengembalian'] = Carbon::now('Asia/Jakarta')->toDateTimeString(); // set tanggal pengembalian pada waktu saat ini
 
             $buku = Buku::find($data['buku_id']);
 

@@ -34,7 +34,7 @@ class BukuController extends Controller
         return redirect()->route('buku.index');
     }
 
-    // menampilkan halaman form ubah data buku
+    // menampilkan halaman detail data buku
     public function edit(string $id)
     {
         $detailBuku = Buku::findOrFail($id);
