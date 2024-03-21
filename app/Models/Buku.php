@@ -10,4 +10,9 @@ class Buku extends Model
     use HasFactory;
 
     protected $fillable = ['judul', 'penulis', 'stok'];
+
+    public function peminjaman()
+    {
+        return $this->hasMany(Peminjaman::class);
+    }
 }

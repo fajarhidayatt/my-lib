@@ -15,4 +15,9 @@ class Anggota extends Model
         'no_hp',
         'alamat'
     ];
+
+    public function peminjaman()
+    {
+        return $this->hasMany(Peminjaman::class);
+    }
 }
