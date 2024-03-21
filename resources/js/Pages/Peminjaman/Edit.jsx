@@ -44,6 +44,7 @@ export default function PeminjamanEdit({ auth, buku, anggota, peminjaman }) {
                                 <SelectInput
                                     name="anggota_id"
                                     id="anggota_id"
+                                    placeholder="Pilih anggota"
                                     value={data.anggota_id}
                                     onChange={(e) =>
                                         setData("anggota_id", e.target.value)
@@ -69,6 +70,7 @@ export default function PeminjamanEdit({ auth, buku, anggota, peminjaman }) {
                                 <SelectInput
                                     name="buku_id"
                                     id="buku_id"
+                                    placeholder="Pilih buku"
                                     value={data.buku_id}
                                     onChange={(e) =>
                                         setData("buku_id", e.target.value)
@@ -118,6 +120,7 @@ export default function PeminjamanEdit({ auth, buku, anggota, peminjaman }) {
                                 <SelectInput
                                     name="status"
                                     id="status"
+                                    placeholder="Pilih status peminjaman"
                                     value={data.status}
                                     onChange={(e) =>
                                         setData("status", e.target.value)
@@ -139,12 +142,14 @@ export default function PeminjamanEdit({ auth, buku, anggota, peminjaman }) {
                             </div>
                             <div className="flex items-center justify-end gap-2">
                                 <DangerButton
+                                    type="button"
                                     disabled={processing}
                                     onClick={() => window.history.back()}
                                 >
                                     Kembali
                                 </DangerButton>
                                 <PrimaryButton
+                                    type="submit"
                                     disabled={
                                         processing ||
                                         peminjaman.status === "Dikembalikan"

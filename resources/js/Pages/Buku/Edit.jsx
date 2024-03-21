@@ -88,12 +88,16 @@ export default function BukuEdit({ auth, buku }) {
                             </div>
                             <div className="flex items-center justify-end gap-2">
                                 <DangerButton
+                                    type="button"
                                     disabled={processing}
                                     onClick={() => window.history.back()}
                                 >
                                     Kembali
                                 </DangerButton>
-                                <PrimaryButton disabled={processing}>
+                                <PrimaryButton
+                                    type="submit"
+                                    disabled={processing}
+                                >
                                     Ubah
                                 </PrimaryButton>
                             </div>
