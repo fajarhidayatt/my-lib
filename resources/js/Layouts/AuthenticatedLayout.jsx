@@ -40,6 +40,12 @@ export default function Authenticated({ user, header, children }) {
                                 >
                                     Buku
                                 </NavLink>
+                                <NavLink
+                                    href={route("peminjaman.index")}
+                                    active={route().current("peminjaman.*")}
+                                >
+                                    Peminjaman
+                                </NavLink>
                             </div>
                         </div>
 
@@ -155,6 +161,12 @@ export default function Authenticated({ user, header, children }) {
                             active={route().current("buku.*")}
                         >
                             Buku
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("peminjaman.index")}
+                            active={route().current("peminjaman.*")}
+                        >
+                            Peminjaman
                         </ResponsiveNavLink>
                     </div>
 

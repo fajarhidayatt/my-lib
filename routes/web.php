@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,9 @@ Route::middleware('auth')->group(function () {
 
     // menu buku
     Route::resource('buku', BukuController::class);
+
+    // menu peminjaman
+    Route::resource('peminjaman', PeminjamanController::class);
 
     // menu admin profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
