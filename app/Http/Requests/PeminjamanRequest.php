@@ -36,7 +36,7 @@ class PeminjamanRequest extends FormRequest
         ];
     }
 
-    // ubah nama default attribute
+    // ubah nama attribute
     public function attributes(): array
     {
         return [

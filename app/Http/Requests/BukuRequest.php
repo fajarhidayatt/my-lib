@@ -34,13 +34,13 @@ class BukuRequest extends FormRequest
         ];
     }
 
-    // ubah nama default attribute
+    // ubah nama attribute
     public function attributes(): array
     {
         return [
-            'judul' => 'Judul Buku',
-            'penulis' => 'Penulis Buku',
-            'stok' => 'Stok Buku',
+            'judul' => 'Judul buku',
+            'penulis' => 'Penulis buku',
+            'stok' => 'Stok buku',
         ];
     }
 }

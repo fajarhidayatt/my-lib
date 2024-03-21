@@ -39,4 +39,15 @@ class AnggotaRequest extends FormRequest
             'unique' => 'nama :attribute telah digunakan'
         ];
     }
+
+    // ubah nama attribute
+    public function attributes(): array
+    {
+        return [
+            'nama' => 'Nama anggota',
+            'email' => 'Email anggota',
+            'no_hp' => 'No HP anggota',
+            'alamat' => 'Alamat anggota',
+        ];
+    }
 }
